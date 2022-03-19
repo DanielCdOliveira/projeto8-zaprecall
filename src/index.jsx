@@ -1,7 +1,7 @@
 import ReactDom from "react-dom";
 import React from "react";
-import QuestionsPage from "./QuestionsPage";
-import StartPage from "./StartPage";
+import QuestionsPage from "./components/QuestionsPage";
+import StartPage from "./components/StartPage";
 
 import "./css/reset.css";
 import "./css/style.css";

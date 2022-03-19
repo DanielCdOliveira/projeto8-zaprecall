@@ -1,5 +1,5 @@
-*{
-    box-sizing: border-box;
+* {
+  box-sizing: border-box;
 }
 body {
   background-color: #f96b6b;
@@ -51,8 +51,8 @@ h2 {
   text-align: center;
   padding-left: 8px;
 }
-ul{
-    margin-top: 40px;
+ul {
+  margin-top: 40px;
 }
 li {
   width: 182px;
@@ -66,9 +66,25 @@ li {
   justify-content: space-between;
   padding-left: 6px;
   padding-right: 12px;
+  position: relative;
 }
-li p{
-    font-family: "Recursive", sans-serif;
-    font-size: 12px;
-    line-height: 14px;
+h3 {
+  font-family: "Recursive", sans-serif;
+  font-size: 12px;
+  line-height: 14px;
+}
+.selected{
+  background: #FFFFD5;
+  height: 80px;
+  align-items: flex-start;
+  padding: 13px 6px;
+}
+.play-button{
+  width: 13px;
+}
+.selected img {
+  width: 30px;
+  position: absolute;
+  right: 8px;
+  bottom: 8px;
 }

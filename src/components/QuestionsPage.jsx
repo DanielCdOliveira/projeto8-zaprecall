@@ -1,5 +1,7 @@
-import QuestionCreator from "./QuestionCreator.jsx"
-import logoPequeno from "./assets/img/logo-pequeno.png"
+import React from "react";
+
+import QuestionCreator from "./QuestionCreator.jsx";
+import logoPequeno from "./../assets/img/logo-pequeno.png";
 
 export default function QuestionsPage() {
   return (
@@ -9,7 +11,6 @@ export default function QuestionsPage() {
         <h2>ZapRecall</h2>
       </header>
       <QuestionCreator />
-      
     </main>
   );
 }
