@@ -1,3 +1,6 @@
+import playButton from "./assets/img/play.png"
+
+
 export default function QuestionCreator() {
   const questions = [
     {
@@ -42,7 +45,7 @@ function Create(props) {
 return(
     <li>
         <p>Pergunta {props.id + 1}</p>
-        <img src="assets/img/play.png" alt="play icon" />
+        <img src={playButton} alt="play icon" />
     </li>
 )
 
