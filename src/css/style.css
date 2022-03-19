@@ -73,13 +73,14 @@ h3 {
   font-size: 12px;
   line-height: 14px;
 }
-.selected{
-  background: #FFFFD5;
+.selected {
+  background: #ffffd5;
   height: 80px;
   align-items: flex-start;
   padding: 13px 6px;
+  flex-direction: column;
 }
-.play-button{
+.play-button {
   width: 13px;
 }
 .selected img {
@@ -87,4 +88,31 @@ h3 {
   position: absolute;
   right: 8px;
   bottom: 8px;
+}
+.buttons {
+  width: 170px;
+  position: absolute;
+  bottom: 3px;
+  display: flex;
+  justify-content: space-between;
+}
+li button {
+  width: 55px;
+  height: 24px;
+  border-radius: 5px;
+  border-style: none;
+  outline: none;
+  font-family: "Recursive", sans-serif;
+  font-size: 7px;
+  line-height: 8px;
+  color: #ffffff;
+}
+.wrong {
+  background-color: #ff3030;
+}
+.almost {
+  background-color: #ff922e;
+}
+.right {
+  background-color: #2fbe34;
 }

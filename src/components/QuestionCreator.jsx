@@ -1,7 +1,7 @@
 import React from "react";
+import CardCreator from "./CardCreator";
 
 import playButton from "./../assets/img/play.png";
-import turnButton from "./../assets/img/turn.png";
 
 export default function QuestionCreator() {
   const questions = [
@@ -56,9 +56,6 @@ function CreateQuestions(props) {
       <img className="play-button" src={playButton} alt="play icon" />
     </li>
   ) : (
-    <li className="selected">
-      <h3>{question}</h3>
-      <img src={turnButton} alt="turn icon" />
-    </li>
+    <CardCreator question={question} answer={answer}   />
   );
 }
