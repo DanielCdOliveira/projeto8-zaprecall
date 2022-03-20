@@ -1,6 +1,9 @@
 import React from "react";
+
 import wrong from "./../assets/img/wrong.png";
-// import CardCreator from "./CardCreator.jsx";
+import almost from "./../assets/img/almost.png";
+import right from "./../assets/img/right.png";
+
 import playButton from "./../assets/img/play.png";
 import turnButton from "./../assets/img/turn.png";
 
@@ -35,7 +38,8 @@ export default function QuestionCreator() {
     },
   ];
 
-  const [score, setScore] = React.useState(["asdsad"]);
+  const [score, setScore] = React.useState([]);
+  let total = 0;
 
   return (
     <>
@@ -48,23 +52,20 @@ export default function QuestionCreator() {
             answer={answer}
             score={score}
             setScore={setScore}
+            total={total}
           />
         ))}
       </ul>
-      <footer>
-        <h4>2/4 CONCLUÍDOS</h4>
-        <div className="score">
-          <ScoreCreator score={score} />
-        </div>
-      </footer>
+
+      <ScoreCreator score={score} total={total}/>
     </>
   );
 }
 
 function CreateQuestions(props) {
-  const { id, question, answer, score, setScore } = props;
+  const { id, question, answer, score, setScore, total } = props;
   const [showQuestion, setShowQuestion] = React.useState(false);
-  
+
   return !showQuestion ? (
     <li onClick={() => setShowQuestion(true)}>
       <h3>Pergunta {id + 1}</h3>
@@ -76,18 +77,20 @@ function CreateQuestions(props) {
       answer={answer}
       score={score}
       setScore={setScore}
+      total={total}
     />
   );
 }
 
 function CardCreator(props) {
-  const { question, answer, score, setScore } = props;
+  const { question, answer, score, setScore, total } = props;
   const [turnCard, setTurnCard] = React.useState(false);
 
   function ChangeScore(newScore) {
     score.push(newScore);
-    console.log(score)
-    setScore([...score])
+    console.log(score);
+    setScore([...score]);
+  
   }
 
   return !turnCard ? (
@@ -114,12 +117,25 @@ function CardCreator(props) {
 }
 
 function ScoreCreator(props) {
-  let {score} =props
-  console.log(score)
+  let { score, total } = props;
   return (
     <>
-    {score.map(()=>(<img src={wrong} alt="" />))}
-      
+      <footer>
+        <h4>{total}/8 CONCLUÍDOS</h4>
+        <div className="score">
+          {score.map((item,index) => {
+            switch (item) {
+              case "wrong":
+                return <img key={index} src={wrong} alt="" />;
+              case "almost":
+                return <img key={index} src={almost} alt="" />;
+              case "right":
+                return <img key={index} src={right} alt="" />;
+            }
+          })}
+        </div>
+      </footer>
     </>
   );
 }
+// <img src={wrong} alt="" />
