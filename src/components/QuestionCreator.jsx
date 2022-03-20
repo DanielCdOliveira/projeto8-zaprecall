@@ -1,7 +1,8 @@
 import React from "react";
-import CardCreator from "./CardCreator";
-
+import wrong from "./../assets/img/wrong.png";
+// import CardCreator from "./CardCreator.jsx";
 import playButton from "./../assets/img/play.png";
+import turnButton from "./../assets/img/turn.png";
 
 export default function QuestionCreator() {
   const questions = [
@@ -34,28 +35,91 @@ export default function QuestionCreator() {
     },
   ];
 
+  const [score, setScore] = React.useState(["asdsad"]);
+
   return (
     <>
       <ul>
         {questions.map(({ question, answer }, index) => (
-          <CreateQuestions key={index} id={index} question={question} answer={answer} />
+          <CreateQuestions
+            key={index}
+            id={index}
+            question={question}
+            answer={answer}
+            score={score}
+            setScore={setScore}
+          />
         ))}
       </ul>
-
+      <footer>
+        <h4>2/4 CONCLUÍDOS</h4>
+        <div className="score">
+          <ScoreCreator score={score} />
+        </div>
+      </footer>
     </>
   );
 }
 
 function CreateQuestions(props) {
-  const {id, question, answer} = props
+  const { id, question, answer, score, setScore } = props;
   const [showQuestion, setShowQuestion] = React.useState(false);
-
+  
   return !showQuestion ? (
     <li onClick={() => setShowQuestion(true)}>
       <h3>Pergunta {id + 1}</h3>
       <img className="play-button" src={playButton} alt="play icon" />
     </li>
   ) : (
-    <CardCreator question={question} answer={answer}   />
+    <CardCreator
+      question={question}
+      answer={answer}
+      score={score}
+      setScore={setScore}
+    />
+  );
+}
+
+function CardCreator(props) {
+  const { question, answer, score, setScore } = props;
+  const [turnCard, setTurnCard] = React.useState(false);
+
+  function ChangeScore(newScore) {
+    score.push(newScore);
+    console.log(score)
+    setScore([...score])
+  }
+
+  return !turnCard ? (
+    <li className="selected" onClick={() => setTurnCard(true)}>
+      <h3>{question}</h3>
+      <img src={turnButton} alt="turn icon" />
+    </li>
+  ) : (
+    <li className="selected">
+      <h3>{answer}</h3>
+      <div className="buttons">
+        <button className="wrong" onClick={() => ChangeScore("wrong")}>
+          Não lembrei
+        </button>
+        <button className="almost" onClick={() => ChangeScore("almost")}>
+          Quase não lembrei
+        </button>
+        <button className="right" onClick={() => ChangeScore("right")}>
+          Zap!
+        </button>
+      </div>
+    </li>
+  );
+}
+
+function ScoreCreator(props) {
+  let {score} =props
+  console.log(score)
+  return (
+    <>
+    {score.map(()=>(<img src={wrong} alt="" />))}
+      
+    </>
   );
 }

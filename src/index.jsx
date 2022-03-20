@@ -6,16 +6,13 @@ import StartPage from "./components/StartPage";
 import "./css/reset.css";
 import "./css/style.css";
 
-
-
 function App() {
+  const [startRecall, setStartRecall] = React.useState(false);
 
-  const [startRecall, setStartRecall] = React.useState(false)
-
-
-
-  return (
-    startRecall ? (<QuestionsPage />) : (<StartPage setStartRecall={setStartRecall}/>)
+  return startRecall ? (
+    <QuestionsPage />
+  ) : (
+    <StartPage setStartRecall={setStartRecall} />
   );
 }
 
