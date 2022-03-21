@@ -9,7 +9,7 @@ import playButton from "./../assets/img/play.png";
 import turnButton from "./../assets/img/turn.png";
 
 export default function QuestionCreator() {
-  const questions = [
+  let deck = [
     {
       question: "O que é JSX?",
       answer: "Uma extensão de linguagem do JavaScript",
@@ -38,7 +38,9 @@ export default function QuestionCreator() {
         "dizer para o React quais informações quando atualizadas devem renderizar a tela novamente",
     },
   ];
-
+  const questions = deck.sort(() => {
+    return (Math.random() - 0.5);
+})
   const [score, setScore] = React.useState([]);
   const [total, setTotal] = React.useState(0);
   const [miss, setMiss] = React.useState(false);
@@ -62,7 +64,7 @@ export default function QuestionCreator() {
       </ul>
 
       <ScoreCreator score={score} total={total} miss={miss} />
-    </>
+    </>  
   );
 }
 
