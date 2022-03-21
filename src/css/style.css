@@ -12,25 +12,26 @@ main {
 }
 /* Pagina inicial */
 h1 {
+  margin-top: 13px;
   font-family: "Righteous", cursive;
-  font-size: 25px;
-  line-height: 32px;
+  font-size: 36px;
+  line-height: 45px;
   color: white;
   text-align: center;
 }
 .logo-start {
-  margin-top: 90px;
-  width: 55px;
+  margin-top:148px ;
+  width: 136px;
+  height: 161px;
   align-self: center;
 }
 .btn-start {
-  margin-top: 70px;
-  width: 141px;
-  height: 31px;
-
+  margin-top: 30px;
+  width: 246px;
+  height: 54px;
   font-family: "Recursive", sans-serif;
-  font-size: 12px;
-  line-height: 14px;
+  font-size: 18px;
+  line-height: 22px;
   color: #d70900;
   background: #ffffff;
   border: 1px solid #d70900;
@@ -63,18 +64,30 @@ h2 {
   text-align: center;
   padding-left: 8px;
 }
+h3 {
+  font-family: "Recursive", sans-serif;
+  font-size: 16px;
+  line-height: 18px;
+  font-weight: 700;
+}
+h5 {
+  font-family: "Recursive", sans-serif;
+  font-size: 18px;
+  line-height: 20px;
+  font-weight: 400;
+}
 ul {
   margin-top: 80px;
-  margin-bottom: 50px;
-  transition: all 0.9s;
+  margin-bottom: 70px;
 }
 li {
-  width: 182px;
-  height: 40px;
+  width: 80vw;
+  max-width: 570px;
+  height: 65px;
   background: #ffffff;
   box-shadow: 0px 4px 5px rgba(0, 0, 0, 0.15);
   border-radius: 5px;
-  margin-bottom: 5px;
+  margin-bottom: 25px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -83,21 +96,16 @@ li {
   position: relative;
   transition: all 0.9s;
 }
-h3 {
-  font-family: "Recursive", sans-serif;
-  font-size: 12px;
-  line-height: 14px;
-  font-weight: 700;
-}
+
 .selected {
   background: #ffffd5;
-  height: 80px;
+  height: 131px;
   align-items: flex-start;
-  padding: 13px 6px;
+  padding: 18px 13px;
   flex-direction: column;
 }
 .play-button {
-  width: 13px;
+  width: 20px;
 }
 .selected img {
   width: 30px;
@@ -106,21 +114,21 @@ h3 {
   bottom: 8px;
 }
 .buttons {
-  width: 170px;
+  width: 274px;
   position: absolute;
-  bottom: 3px;
+  bottom: 6px;
   display: flex;
   justify-content: space-between;
 }
 li button {
-  width: 55px;
-  height: 24px;
+  width: 85px;
+  height: 38px;
   border-radius: 5px;
   border-style: none;
   outline: none;
   font-family: "Recursive", sans-serif;
-  font-size: 7px;
-  line-height: 8px;
+  font-size: 12px;
+  line-height: 14px;
   color: #ffffff;
 }
 .wrong {
@@ -136,7 +144,7 @@ li button {
 /* FOOTER */
 footer {
   position: fixed;
-  height: 50px;
+  height: 70px;
   background-color: #ffffff;
   bottom: 0;
   left: 0;
@@ -144,17 +152,21 @@ footer {
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
   padding-top: 10px;
 }
 h4 {
   font-family: "Recursive";
   font-style: normal;
   font-weight: 400;
-  font-size: 12px;
-  line-height: 14px;
+  font-size: 18px;
+  line-height: 21px;
   color: #333333;
 }
 .score img {
-  width: 14px;
-  height: 14px;
+  width: 23px;
+  height: 23px;
+}
+.end {
+  height: 171px;
 }

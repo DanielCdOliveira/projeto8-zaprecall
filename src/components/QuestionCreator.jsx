@@ -39,7 +39,8 @@ export default function QuestionCreator() {
   ];
 
   const [score, setScore] = React.useState([]);
-  let total = 0;
+  const [total, setTotal] = React.useState(0);
+  const [miss, setMiss] = React.useState(false);
 
   return (
     <>
@@ -53,17 +54,19 @@ export default function QuestionCreator() {
             score={score}
             setScore={setScore}
             total={total}
+            setTotal={setTotal}
+            setMiss={setMiss}
           />
         ))}
       </ul>
 
-      <ScoreCreator score={score} total={total}/>
+      <ScoreCreator score={score} total={total} miss={miss}/>
     </>
   );
 }
 
 function CreateQuestions(props) {
-  const { id, question, answer, score, setScore, total } = props;
+  const { id, question, answer, score, setScore, total, setTotal, setMiss } = props;
   const [showQuestion, setShowQuestion] = React.useState(false);
 
   return !showQuestion ? (
@@ -78,29 +81,37 @@ function CreateQuestions(props) {
       score={score}
       setScore={setScore}
       total={total}
+      setTotal={setTotal}
+      setMiss={setMiss}
+      
     />
   );
 }
 
 function CardCreator(props) {
-  const { question, answer, score, setScore, total } = props;
+  const { question, answer, score, setScore, total, setTotal, setMiss } = props;
   const [turnCard, setTurnCard] = React.useState(false);
 
   function ChangeScore(newScore) {
     score.push(newScore);
     console.log(score);
+    if(newScore === "wrong"){
+      console.log("affasfasas")
+      setMiss(true);
+      
+    }
     setScore([...score]);
-  
+    setTotal(total + 1);
   }
 
   return !turnCard ? (
     <li className="selected" onClick={() => setTurnCard(true)}>
-      <h3>{question}</h3>
+      <h5>{question}</h5>
       <img src={turnButton} alt="turn icon" />
     </li>
   ) : (
     <li className="selected">
-      <h3>{answer}</h3>
+      <h5>{answer}</h5>
       <div className="buttons">
         <button className="wrong" onClick={() => ChangeScore("wrong")}>
           Não lembrei
@@ -117,13 +128,35 @@ function CardCreator(props) {
 }
 
 function ScoreCreator(props) {
-  let { score, total } = props;
-  return (
-    <>
-      <footer>
+  let { score, total, miss } = props;
+  if (total !== 8) {
+    return (
+      <>
+        <footer>
+          <h4>{total}/8 CONCLUÍDOS</h4>
+          <div className="score">
+            {score.map((item, index) => {
+              switch (item) {
+                case "wrong":
+                  return <img key={index} src={wrong} alt="" />;
+                case "almost":
+                  return <img key={index} src={almost} alt="" />;
+                case "right":
+                  return <img key={index} src={right} alt="" />;
+                  default:break
+              }
+            })}
+          </div>
+        </footer>
+      </>
+    );
+  } else if (!miss) {
+    return (
+      <footer className="end">
+        <h4>Você não esqueceu de nenhum flashcard!</h4>
         <h4>{total}/8 CONCLUÍDOS</h4>
         <div className="score">
-          {score.map((item,index) => {
+          {score.map((item, index) => {
             switch (item) {
               case "wrong":
                 return <img key={index} src={wrong} alt="" />;
@@ -135,7 +168,26 @@ function ScoreCreator(props) {
           })}
         </div>
       </footer>
-    </>
-  );
-}
-// <img src={wrong} alt="" />
+    );
+  } else {
+    return (
+      <footer className="end">
+        <h4>Ainda faltam alguns...</h4>
+        <h4>Mas não desanime!</h4>
+        <h4>{total}/8 CONCLUÍDOS</h4>
+        <div className="score">
+          {score.map((item, index) => {
+            switch (item) {
+              case "wrong":
+                return <img key={index} src={wrong} alt="" />;
+              case "almost":
+                return <img key={index} src={almost} alt="" />;
+              case "right":
+                return <img key={index} src={right} alt="" />;
+            }
+          })}
+        </div>
+      </footer>
+    );
+  }
+} 
