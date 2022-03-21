@@ -20,7 +20,7 @@ h1 {
   text-align: center;
 }
 .logo-start {
-  margin-top:148px ;
+  margin-top: 148px;
   width: 136px;
   height: 161px;
   align-self: center;
@@ -94,7 +94,6 @@ li {
   padding-left: 6px;
   padding-right: 12px;
   position: relative;
-  transition: all 0.9s;
 }
 
 .selected {
@@ -114,6 +113,7 @@ li {
   bottom: 8px;
 }
 .buttons {
+  align-self: center;
   width: 274px;
   position: absolute;
   bottom: 6px;
@@ -131,14 +131,29 @@ li button {
   line-height: 14px;
   color: #ffffff;
 }
-.wrong {
+.wrong-button {
   background-color: #ff3030;
 }
-.almost {
+.almost-button {
   background-color: #ff922e;
 }
-.right {
+.right-button {
   background-color: #2fbe34;
+}
+.wrong {
+  color: #d70900;
+  text-decoration: line-through;
+  pointer-events: none;
+}
+.almost {
+  color: #ff922e;
+  text-decoration: line-through;
+  pointer-events: none;
+}
+.right {
+  color: #2fbe34;
+  text-decoration: line-through;
+  pointer-events: none;
 }
 
 /* FOOTER */
@@ -162,6 +177,7 @@ h4 {
   font-size: 18px;
   line-height: 21px;
   color: #333333;
+  text-align: center;
 }
 .score img {
   width: 23px;
@@ -169,4 +185,33 @@ h4 {
 }
 .end {
   height: 171px;
+  padding: 16px 70px;
+}
+.end-h4 {
+  padding-bottom: 14px;
+}
+.end h3 {
+  font-size: 18px;
+  margin-left: 12px;
+}
+.img-end {
+  display: inline;
+  width: 23px;
+}
+.text {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 14px;
+  margin-top: 14px;
+}
+
+/* Media query */
+@media screen and (min-width: 800px) {
+  footer {
+    height: 118px;
+  }
+  ul {
+    margin-bottom: 118px;
+  }
 }
