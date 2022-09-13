@@ -74,7 +74,7 @@ Install my project with npm
 > Run aplication:
 
 ```bash
-  npm install
+  npm start
 ```
 
 
